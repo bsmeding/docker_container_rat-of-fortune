@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎡 Rat of Fortune</title>
+    <script src="/static/Winwheel.js"></script>
+    <script src="/static/TweenMax.min.js"></script>
+    <style>
+        body { font-family: Arial; text-align: center; padding-top: 20px; }
+        .checkboxes { max-width: 300px; margin: auto; text-align: left; }
+        #canvas { margin-top: 30px; }
+        #spinButton { margin-top: 15px; font-size: 18px; padding: 10px 20px; }
+        #result { font-size: 24px; color: green; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🎯 Rat of Fortune</h1>
+    <form id="userForm">
+        <div class="checkboxes">
+            {% for name in names %}
+                <label>
+                    <input type="checkbox" name="name" value="{{ name }}" checked> {{ name }}
+                </label><br>
+            {% endfor %}
+        </div>
+    </form>
+
+    <button id="spinButton" onclick="buildAndSpin()">🎰 Spin the Wheel</button>
+    <div style="position: relative; display: inline-block;">
+    <div style="
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid red;
+        z-index: 2;">
+    </div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</div>
+    <div id="result"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
