@@ -38,3 +38,15 @@ echo -e "Alice\nBob\nCharlie\nDiana" > names.txt
 docker build -t rat-of-fortune .
 docker run -p 5000:5000 -v $(pwd)/names.txt:/app/names.txt rat-of-fortune
 ```
+
+
+### ✅ Run under subpath `/wheel` (e.g. reverse proxy)
+
+```bash
+docker run -p 5000:5000 \
+  -v $(pwd)/names.txt:/app/names.txt \
+  -e APP_BASE_PATH=/wheel \
+  bsmeding/rat-of-fortune
+
+# Open http://localhost:5000/wheel/
+```
